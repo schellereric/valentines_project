@@ -7,11 +7,40 @@
     <title>Valentine Planner</title>
     <style>
         /* Inline CSS */
+        .start-page {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        .start-page h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .start-page button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #e83e8c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .start-page button:hover {
+            background-color: #d02b6e;
+        }
+
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: pink;
-            color: #fff;
+            background: rgb(248, 205, 213);
+            color: #9b2323;
             margin: 0;
             padding: 0;
         }
@@ -46,35 +75,62 @@
             margin-top: 20px;
         }
 
+        /* Container for the 3D effect */
+        .option-container {
+            perspective: 1000px;
+            /* Gives the 3D effect */
+        }
+
+        /* Option tiles: Adjusted size */
         .option {
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            text-align: center;
-            margin: 20px;
-            padding: 20px;
-            background: white;
-            color: #c90929;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 200px;
-            /* Increased width */
-            height: 250px;
-            /* Increased height for larger clickable area */
-            font-size: 1.2em;
-            /* Larger font size */
-            transition: transform 0.2s, box-shadow 0.2s;
-            /* Smooth hover effects */
+            align-items: center;
+            width: 300px;
+            /* Increase the width of each tile */
+            height: 500px;
+            /* Increase the height of each tile */
+            margin: 10px;
+            /* Space between tiles */
+            border: 2px solid #ff8fa2;
+            /* Optional: border around the tile */
+            box-sizing: border-box;
+            /* Ensures border/padding don't affect size */
+            padding: 10px;
+            /* Add some padding for better spacing */
+            overflow: hidden;
+            /* Prevent text or images from overflowing */
         }
 
-        .option img {
-            width: 150px;
-            /* Increased size of images */
-            height: 150px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+        /* Image inside the option: Ensure it fills the tile but doesn't distort */
+        .option-img {
+            width: 100%;
+            height: 70%;
+            /* Adjust height of image so there's space for text */
+            object-fit: cover;
+            /* Ensures image fills the container */
+            margin: 0;
+            /* Remove margins around the image */
         }
+
+        /* Text below the image */
+        .option-text {
+            margin-top: 10px;
+            /* Space between the image and the text */
+            text-align: center;
+            font-size: 16px;
+            /* Adjust text size to fit better */
+            line-height: 1.2;
+            /* Adjust line height for better text readability */
+            max-height: 30%;
+            /* Limit height for text */
+            overflow: hidden;
+            /* Ensure text doesn't overflow */
+            text-overflow: ellipsis;
+            /* Truncate text if it's too long */
+        }
+
 
         .option:hover {
             transform: scale(1.05);
@@ -83,55 +139,101 @@
             /* Add shadow on hover */
         }
 
-
         input[type="radio"] {
             margin-right: 10px;
         }
 
+        /* Summary tile container */
         #result-container {
-            display: block;
-            /* Set to block for stacking elements */
-            text-align: center;
-            /* Center align the header */
-            margin-top: 20px;
-        }
-
-        #result-container div {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            /* Space between tiles */
         }
 
-        #result-container .option {
-            width: 200px;
-            /* Consistent size with the question tiles */
-            height: auto;
-            background: white;
-            color: #ff5e78;
-            border-radius: 10px;
-            padding: 20px;
+        /* Individual summary tile styling */
+        .summary-tile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            /* Match the size of the options */
+            height: 500px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* Image for summary tiles */
+        .summary-tile img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+        }
+
+        /* Text for summary tiles */
+        .summary-tile p {
+            margin-top: 10px;
             text-align: center;
-            font-size: 1em;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            /* Slight shadow for tiles */
+            font-size: 16px;
+            line-height: 1.2;
+            max-height: 30%;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        
+        .disclaimer {
+            text-align: center;
+            /* Center the text */
+            margin-top: 20px;
+            /* Add some space above */
+            font-size: 14px;
+            /* Adjust font size */
+            color: #555;
+            /* Dark gray color */
+
+        }
+
+        #next-button {
+            display: block;
+            margin: 20px auto;
+            /* This centers the button horizontally */
+            text-align: center;
+            /* Ensures the text inside the button is centered */
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Plan Your Perfect Valentine's Date!</h1>
+        <h1>Plan Your Valentine's Date! (I pay...)</h1>
     </header>
     <main>
-        <div id="question-container">
+        <!-- Start Page -->
+        <div id="start-page" class="start-page">
+            <h2>Welcome to the Valentine's Date Planner!</h2>
+            <iframe src="https://giphy.com/embed/4Zvt4ZDe018rySrOky" width="480" height="451" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/love-cartoon-couple-4Zvt4ZDe018rySrOky"></a></p>
+            <button id="start-button">Start</button>
+            <button id="randomize-button">Surprise me (scroll down)</button>
+        </div>
+
+        <!-- Question Page (initially hidden) -->
+        <div id="question-container" style="display: none;">
             <h2 id="question"></h2>
             <form id="options-form"></form>
         </div>
-        <button id="next-button">Next</button>
+
+        <button id="next-button" style="display: none;">Next</button>
+
+        <!-- Disclaimer (optional) -->
+        <div id="disclaimer" class="disclaimer">
+            <p>Exuse the lame image uses in this, we staying mostly copyright free in here lol</p>
+        </div>
+
+        <!-- Result Page (initially hidden) -->
         <div id="result-container" style="display: none;">
             <h2>Your Valentine's Date Summary:</h2>
             <ul id="result"></ul>
