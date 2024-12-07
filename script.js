@@ -1,3 +1,5 @@
+console.log('Script Loaded')
+
 const questions = [
     {
         text: "Wanna go on a valentines date?",
