@@ -134,7 +134,32 @@ function showResult() {
 
         tileContainer.appendChild(tile);
     });
+    // Add Back to Start button
+    const backButton = document.createElement("button");
+    backButton.textContent = "Back to Start";
+    backButton.style.marginTop = "20px";
+    backButton.style.padding = "10px 20px";
+    backButton.style.fontSize = "16px";
+    backButton.style.cursor = "pointer";
+    backButton.style.display = "block"; 
+    backButton.style.marginLeft = "auto"; // Center horizontally
+    backButton.style.marginRight = "auto"; // Center horizontally
+    backButton.addEventListener("click", resetQuiz);
+    resultContainer.appendChild(backButton);
+    
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://giphy.com/embed/DyQrKMpqkAhNHZ1iWe"; // Replace with your GIF's iframe embed link
+    iframe.width = "400"; // Set your desired width
+    iframe.height = "300"; // Set your desired height
+    iframe.style.border = "none"; // Optional, remove border
+    resultContainer.insertBefore(iframe, backButton);
 }
+
+function resetQuiz() {
+    location.reload();
+}
+
+
 
 // Handle "Start" button click
 startButton.addEventListener("click", function () {
