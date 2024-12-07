@@ -90,8 +90,10 @@ function nextQuestion() {
 
     if (currentQuestionIndex < questions.length) {
         showQuestion();
+        window.scrollTo(0, 0);
     } else {
         showResult();
+        window.scrollTo(0, 0);
     }
 }
 
