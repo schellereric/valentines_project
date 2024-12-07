@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Planner</title>
+    <style>
+        /* Inline CSS */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: pink;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #ff5e78;
+            padding: 20px;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        button {
+            background: #e43451;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #ff8fa2;
+        }
+
+        #options-form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            color: #c90929;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 200px;
+            /* Increased width */
+            height: 250px;
+            /* Increased height for larger clickable area */
+            font-size: 1.2em;
+            /* Larger font size */
+            transition: transform 0.2s, box-shadow 0.2s;
+            /* Smooth hover effects */
+        }
+
+        .option img {
+            width: 150px;
+            /* Increased size of images */
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .option:hover {
+            transform: scale(1.05);
+            /* Slight zoom effect on hover */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Add shadow on hover */
+        }
+
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        #result-container {
+            display: block;
+            /* Set to block for stacking elements */
+            text-align: center;
+            /* Center align the header */
+            margin-top: 20px;
+        }
+
+        #result-container div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            /* Space between tiles */
+        }
+
+        #result-container .option {
+            width: 200px;
+            /* Consistent size with the question tiles */
+            height: auto;
+            background: white;
+            color: #ff5e78;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            font-size: 1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Slight shadow for tiles */
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Plan Your Perfect Valentine's Date!</h1>
+    </header>
+    <main>
+        <div id="question-container">
+            <h2 id="question"></h2>
+            <form id="options-form"></form>
+        </div>
+        <button id="next-button">Next</button>
+        <div id="result-container" style="display: none;">
+            <h2>Your Valentine's Date Summary:</h2>
+            <ul id="result"></ul>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
