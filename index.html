@@ -85,6 +85,7 @@
         .option {
             display: flex;
             flex-direction: column;
+            border-radius: 10px;
             justify-content: center;
             align-items: center;
             width: 300px;
@@ -139,6 +140,16 @@
             /* Add shadow on hover */
         }
 
+        .inner-tile {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 89%px;
+            height: 89%;
+            text-align: center;
+        }
+
         input[type="radio"] {
             margin-right: 10px;
         }
@@ -153,11 +164,12 @@
 
         /* Individual summary tile styling */
         .summary-tile {
-            display: flex;
+            display: inline-block;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 300px;
+            text-align: center;
             /* Match the size of the options */
             height: 500px;
             margin: 10px;
@@ -215,7 +227,9 @@
         <!-- Start Page -->
         <div id="start-page" class="start-page">
             <h2>Welcome to the Valentine's Date Planner!</h2>
-            <iframe src="https://giphy.com/embed/4Zvt4ZDe018rySrOky" width="340" height="311" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/love-cartoon-couple-4Zvt4ZDe018rySrOky"></a></p>
+            <iframe src="https://giphy.com/embed/4Zvt4ZDe018rySrOky" width="340" height="311" style="" frameBorder="0"
+                class="giphy-embed" allowFullScreen></iframe>
+            <p><a href="https://giphy.com/gifs/love-cartoon-couple-4Zvt4ZDe018rySrOky"></a></p>
             <button id="start-button">Start</button>
             <button id="randomize-button">Surprise me (scroll down)</button>
         </div>
@@ -235,10 +249,10 @@
             <h2>Your Valentine's Date Summary:</h2>
             <ul id="result"></ul>
         </div>
-                <!-- Disclaimer (optional) -->
-                <div id="disclaimer" class="disclaimer">
-                    <p>Exuse the lame image uses in this, we staying mostly copyright free in here lol</p>
-                </div>
+        <!-- Disclaimer (optional) -->
+        <div id="disclaimer" class="disclaimer">
+            <p>Exuse the lame image uses in this, we staying mostly copyright free in here lol</p>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
